@@ -50,7 +50,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res) => {
 
   if (req.query.category) {
     let category;
-    req.query.category = req.query.category.replaceAll("-", " ");
+    req.query.category = req.query.category.replace(/-/g, " ");
     category = await Category.findOne({ name: req.query.category });
     queryCopy = { ...queryCopy, category: category._id };
     if (req.query.subcategory) {
