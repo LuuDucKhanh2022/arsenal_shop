@@ -1,0 +1,37 @@
+
+  .favouriteItemCard {
+    display: flex;
+    flex: 1;
+  }
+  .favouriteItemCard .product{
+    flex: 1;
+    margin: 8px;
+    color: black;
+  }
+  .favouriteItemCard .product img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .favouriteItemCard .action {
+    width: 90px;
+    margin: 8px;
+  }
+  .favouriteItemCard .action button {
+    padding: 4px 8px;
+    margin-bottom: 16px;
+    color:white;
+    border: none;
+  }
+
+  .favouriteItemCard .size {
+    width: 150px;
+    margin: 8px;
+    text-align: center;
+
+  }
+
+
+  .favouriteItemCard .size select {
+    font-size: 14px;
+  }
