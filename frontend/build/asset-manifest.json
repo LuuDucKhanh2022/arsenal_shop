@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2ab7ce14.css",
+    "main.js": "/static/js/main.377a3aa3.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/bg2.webp": "/static/media/bg2.2ef5b6017fed0adba55e.webp",
+    "static/media/bg1.webp": "/static/media/bg1.f7073642cecc10a59f4b.webp",
+    "static/media/bg3.webp": "/static/media/bg3.be1586b9e6aa8023307d.webp",
+    "static/media/no-product-found.webp": "/static/media/no-product-found.6ab52bd01d67c4f71402.webp",
+    "static/media/arsenal-crest-logo.svg": "/static/media/arsenal-crest-logo.fab1ebbc20e487462539c0d1241f185e.svg",
+    "index.html": "/index.html",
+    "main.2ab7ce14.css.map": "/static/css/main.2ab7ce14.css.map",
+    "main.377a3aa3.js.map": "/static/js/main.377a3aa3.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2ab7ce14.css",
+    "static/js/main.377a3aa3.js"
+  ]
+}
