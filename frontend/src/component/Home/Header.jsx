@@ -25,11 +25,13 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import DynamicFeedIcon from "@material-ui/icons/DynamicFeed";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import CloseIcon from "@material-ui/icons/Close";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import styles from "./Header.module.css";
 import { useState } from "react";
 import { logout } from "../../actions/userAction";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import SubMenu from "./SubMenu";
+import "./Header.css"
+import styles from "./Header.module.css";
+
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -47,16 +49,16 @@ const Header = () => {
   const switcherTab = useRef(null);
 
   window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(styles.navbar);
-    const navbarMobile = document.querySelector(styles.navbarMobile);
+    const navbar = document.querySelector("navbar");
+    const navbarMobile = document.querySelector("navbarMobile");
     if (navbar)
       window.pageYOffset > 100
-        ? navbar.classList.add(styles.active)
-        : navbar.classList.remove(styles.active);
+        ? navbar.classList.add("active")
+        : navbar.classList.remove("active");
     if (navbarMobile)
       window.pageYOffset > 100
-        ? navbarMobile.classList.add(styles.active)
-        : navbarMobile.classList.remove(styles.active);
+        ? navbarMobile.classList.add("active")
+        : navbarMobile.classList.remove("active");
   });
 
   const toggleMenuHandle = () => {
@@ -136,7 +138,7 @@ const Header = () => {
           </div>
         </div>
         {/* Header Navbar mobile */}
-        <div className={clsx(styles.navbarMobile)}>
+        <div className={clsx(styles.navbarMobile,"navbarMobile")}>
           <div>
             <NavLink
               activeClassName={clsx(styles.navLinkActive)}
@@ -372,7 +374,7 @@ const Header = () => {
         </div>
 
         {/* navbar               */}
-        <div className={clsx(styles.navbar)} ref={switcherTab}>
+        <div className={clsx(styles.navbar,"navbar")} ref={switcherTab}>
           <div className={clsx(styles.navigation)}>
             <ul>
               <Link className={clsx(styles.navbarItem)} to="/">
