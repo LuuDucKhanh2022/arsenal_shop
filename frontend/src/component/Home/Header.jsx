@@ -47,16 +47,16 @@ const Header = () => {
   const switcherTab = useRef(null);
 
   window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".Header_navbar__P4Crx");
-    const navbarMobile = document.querySelector(".Header_navbarMobile__fFc08");
+    const navbar = document.querySelector(styles.navbar);
+    const navbarMobile = document.querySelector(styles.navbarMobile);
     if (navbar)
       window.pageYOffset > 100
-        ? navbar.classList.add("Header_active__Fzlif")
-        : navbar.classList.remove("Header_active__Fzlif");
+        ? navbar.classList.add(styles.active)
+        : navbar.classList.remove(styles.active);
     if (navbarMobile)
       window.pageYOffset > 100
-        ? navbarMobile.classList.add("Header_active__Fzlif")
-        : navbarMobile.classList.remove("Header_active__Fzlif");
+        ? navbarMobile.classList.add(styles.active)
+        : navbarMobile.classList.remove(styles.active);
   });
 
   const toggleMenuHandle = () => {

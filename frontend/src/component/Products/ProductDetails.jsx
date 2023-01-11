@@ -208,47 +208,47 @@ const ProductDetails = ({ match, history }) => {
   const changeVarse2Tab = (e, tabName) => {
     let i, tabContent, tabTitle;
     tabContent = document.getElementsByClassName(
-      "Productdetails_varse2TabContent__jQPxN"
+      styles.varse2TabContent
     );
     for (i = 0; i < tabContent.length; i++) {
-      tabContent[i].classList.remove("Productdetails_active__0NK9R");
+      tabContent[i].classList.remove(styles.active);
     }
 
     tabTitle = document.getElementsByClassName(
-      "Productdetails_varse2TabTitle__mzhCZ "
+      styles.varse2TabTitle
     );
     for (i = 0; i < tabTitle.length; i++) {
-      tabTitle[i].classList.remove("Productdetails_active__0NK9R");
+      tabTitle[i].classList.remove(styles.active);
     }
     tabContent = document.getElementById(tabName);
-    tabContent.classList.add("Productdetails_active__0NK9R");
+    tabContent.classList.add(styles.active);
     // document
     //   .getElementById(tabName)
     //   .classList.add("Productdetails_active__0NK9R");
-    e.currentTarget.classList.add("Productdetails_active__0NK9R");
+    e.currentTarget.classList.add(styles.active);
     setVarse2Tab(tabName);
   };
 
   const changeTab = (e, tabName) => {
     var i, tabContent, tabTitle;
     tabContent = document.getElementsByClassName(
-      "Productdetails_tabContent__Ms9al"
+      styles.tabContent
     );
     for (i = 0; i < tabContent.length; i++) {
-      tabContent[i].classList.remove("Productdetails_active__0NK9R");
+      tabContent[i].classList.remove(styles.active);
     }
 
     tabTitle = document.getElementsByClassName(
-      "Productdetails_tabTitle__cwf7L"
+      styles.tabTitle
     );
     for (i = 0; i < tabTitle.length; i++) {
-      tabTitle[i].classList.remove("Productdetails_active__0NK9R");
+      tabTitle[i].classList.remove(styles.active);
     }
 
     document
       .getElementById(tabName)
-      .classList.add("Productdetails_active__0NK9R");
-    e.currentTarget.classList.add("Productdetails_active__0NK9R");
+      .classList.add(styles.active);
+    e.currentTarget.classList.add(styles.active);
     setTab(tabName);
   };
 
