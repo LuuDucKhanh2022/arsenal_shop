@@ -247,6 +247,23 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     runValidators: true,
     useUnified: false,
   });
+
+  let orders = await Order.find();
+  for(let i = 0;i < orders.length ; i++) {
+    let order = orders[i];
+    let orderItems =order.orderItems;
+    let OrderHaveProduct = orderItems.find((orderItem) => orderItem.id.toString() === req.params.id)
+    if ( OrderHaveProduct !== undefined  ) {
+      for( let i =0;i < orderItems.length;i++) {
+        if (orderItems[i].id.toString() === req.params.id) {
+          orderItems[i].name = product.name;
+          orderItems[i].image= product.images[0].url;
+        }
+      }
+      await Order.findByIdAndUpdate(order._id,{orderItems})
+    }
+  }
+  
   res.status(200).json({
     success: true,
     productUpdated: product,

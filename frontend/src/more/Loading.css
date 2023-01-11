@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-label{
+.loading label{
   position: relative;
   height: 125px;
   width: 125px;

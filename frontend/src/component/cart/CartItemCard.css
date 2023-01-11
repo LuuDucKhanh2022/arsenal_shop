@@ -4,12 +4,13 @@
     height: 8vmax;
     align-items: flex-start;
     box-sizing: border-box;
+    position: relative;
   }
   .CartItemCard > img {
     width: 5vmax;
   }
   
-  .CartItemCard > div {
+  .CartItemCard > .CartItemCardSection {
     display: flex;
     margin: 0.3vmax 1vmax;
     flex-direction: column;
@@ -35,7 +36,44 @@
     padding: 8px 0;
     text-align: center;
   }
+
+  .toggleCustomProduct,.customProductBox {
+    position: absolute;
+    right: 0;
+  }
+
+  .toggleCustomProduct {
+    cursor: pointer;
+    font-size: 32px;
+    color: var;
+    color: var(--main-color);
+    font-weight: bolder;
+    padding: 4px;
+    z-index: 2;
+  }
+
+  .customProductBox {
+    display: none;
+    padding: 8px;
+    background-color: white;
+    border: 1px solid var(--main-color);
+  }
+
+  .customProductBox.active {
+    display: block;
+    width: 99%;
+    height: 99%;
+    margin: auto;
+  }
   
+  .yourCustomTitle {
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .yourCustomProductList{
+
+  }
   @media screen and (max-width: 767px) {
     .CartItemCard {
       padding: 2vmax 0.5vmax;

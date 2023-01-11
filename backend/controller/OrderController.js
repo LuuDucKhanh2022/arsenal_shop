@@ -54,7 +54,7 @@ exports.getAllOrders = catchAsyncErrors(async (req, res, next) => {
   const orders = await Order.find({ user: req.user._id });
   res.status(200).json({
     success: true,
-    orders,
+    orders:orders.reverse(),
   });
 });
 
@@ -73,7 +73,7 @@ exports.getAllAdminOrders = catchAsyncErrors(async (req, res, next) => {
     success: true,
     totalAmount,
     user,
-    orders
+    orders:orders.reverse()
   });
 });
 

@@ -47,16 +47,16 @@ const Header = () => {
   const switcherTab = useRef(null);
 
   window.addEventListener("scroll", () => {
-    const navbar = document.querySelector(".Header_navbar__RlYp-");
-    const navbarMobile = document.querySelector(".Header_navbarMobile__OtN8P");
+    const navbar = document.querySelector(".Header_navbar__P4Crx");
+    const navbarMobile = document.querySelector(".Header_navbarMobile__fFc08");
     if (navbar)
       window.pageYOffset > 100
-        ? navbar.classList.add("Header_active__Tlhkl")
-        : navbar.classList.remove("Header_active__Tlhkl");
+        ? navbar.classList.add("Header_active__Fzlif")
+        : navbar.classList.remove("Header_active__Fzlif");
     if (navbarMobile)
       window.pageYOffset > 100
-        ? navbarMobile.classList.add("Header_active__Tlhkl")
-        : navbarMobile.classList.remove("Header_active__Tlhkl");
+        ? navbarMobile.classList.add("Header_active__Fzlif")
+        : navbarMobile.classList.remove("Header_active__Fzlif");
   });
 
   const toggleMenuHandle = () => {

@@ -49,6 +49,17 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      customProduct : {
+        name: {
+          type:String
+        },
+        number:{
+          type:String
+        },
+        patch: {
+          type: String
+        }
+      },
       id: {
         type: mongoose.Schema.ObjectId,
         ref: "Product",

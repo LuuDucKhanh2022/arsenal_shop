@@ -16,6 +16,8 @@ import { Button } from "@material-ui/core";
 import { UPDATE_ORDER_RESET } from "../../constans/OrderConstans";
 import "./UpdateOrder.css";
 import { ToastContainer, toast } from "react-toastify";
+import OrderItemCard from "../../more/OrderItemCard";
+
 
 const UpdateOrder = ({ match }) => {
   const { order, error, loading } = useSelector(
@@ -143,23 +145,11 @@ const UpdateOrder = ({ match }) => {
                   </div>
                 </div>
                 <div className="confirmCartItems">
-                  <Typography>Your Cart Items:</Typography>
+                  <Typography>Cart Items:</Typography>
                   <div className="confirmCartItemsContainer">
                     {order.orderItems &&
-                      order.orderItems.map((item) => (
-                        <div key={item.product}>
-                          <img src={item.image} alt="Product" />
-                          <Link to={`/product/${item.product}`}>
-                            {item.name}
-                            <div>
-                              {item.size !== null ? `Size: ${item.size}` : ""}
-                            </div>
-                          </Link>{" "}
-                          <span>
-                            {item.quantity} X ${item.price} ={" "}
-                            <b>${item.price * item.quantity}</b>
-                          </span>
-                        </div>
+                      order.orderItems.map((orderItem) => (
+                        <OrderItemCard key={orderItem._id} item={orderItem}/>
                       ))}
                   </div>
                 </div>

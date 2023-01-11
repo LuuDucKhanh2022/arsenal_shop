@@ -107,30 +107,30 @@ const Cart = ({ history }) => {
             </div>
 
             {cart &&
-              cart.map((item) => (
-                <div className="cartContainer" key={`${item.id}${item.size}`}>
-                  <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+              cart.map((cartItem) => (
+                <div className="cartContainer" key={`${cartItem.id}${cartItem.size}`}>
+                  <CartItemCard item={cartItem} deleteCartItems={deleteCartItems} />
                   <div className="cartInput">
                     <button
                       onClick={() =>
                         decreaseQuantity(
-                          item.id,
-                          item.quantity,
-                          item.size,
-                          item.stock
+                          cartItem.id,
+                          cartItem.quantity,
+                          cartItem.size,
+                          cartItem.stock
                         )
                       }
                     >
                       -
                     </button>
-                    <input type="number" readOnly value={item.quantity} />
+                    <input type="number" readOnly value={cartItem.quantity} />
                     <button
                       onClick={() =>
                         increaseQuantity(
-                          item.id,
-                          item.quantity,
-                          item.size,
-                          item.stock
+                          cartItem.id,
+                          cartItem.quantity,
+                          cartItem.size,
+                          cartItem.stock
                         )
                       }
                     >
@@ -138,7 +138,7 @@ const Cart = ({ history }) => {
                     </button>
                   </div>
                   <p className="cartSubtotal">{`$${
-                    item.price * item.quantity
+                    cartItem.price * cartItem.quantity
                   }`}</p>
                 </div>
               ))}

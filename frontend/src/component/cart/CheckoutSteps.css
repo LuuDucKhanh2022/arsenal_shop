@@ -53,6 +53,7 @@
   }
   
   .confirmCartItemsContainer > div {
+    position: relative;
     display: flex;
     font: 400 1vmax "Roboto";
     align-items: center;
@@ -74,6 +75,7 @@
   .confirmCartItemsContainer > div > span {
     font: 100 1vmax "Roboto";
     color: #5e5e5e;
+    margin-right: 32px;
   }
   
   .orderSummary {

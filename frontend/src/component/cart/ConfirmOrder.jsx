@@ -72,7 +72,7 @@ const ConfirmOrder = ({ history }) => {
                   cartItems.map((item) => (
                     <div key={`${item.product}${item.size}`}>
                       <img src={item.image} alt="Product" />
-                      <Link to={`/product/${item.product}`}>
+                      <Link to={`/products`}>
                         {item.name}
                         <div>
                           {item.size !== null ? `Size : ${item.size}` : ""}

@@ -1,4 +1,5 @@
 const User = require("../models/UserModel");
+const Product = require("../models/ProductModel");
 const Token = require("../models/tokenModel");
 const ErrorHandler = require("../utils/ErrorHandler.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
@@ -9,86 +10,7 @@ const cloudinary = require("cloudinary");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-exports.signup = function (req, res, next) {
-  User.findOne({ email: req.body.email }, function (err, user) {
-    // error occur
-    if (err) {
-      return res.status(500).send({ msg: err.message });
-    }
-    // if email is exist into database i.e. email is associated with another user.
-    else if (user) {
-      return res.status(400).send({
-        msg: "This email address is already associated with another account.",
-      });
-    }
-    // if user is not exist into database then save the user into database for register account
-    else {
-      // password hashing for save into databse
-      req.body.password = Bcrypt.hashSync(req.body.password, 10);
-      // create and save user
-      user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-      });
-      user.save(function (err) {
-        if (err) {
-          return res.status(500).send({ msg: err.message });
-        }
 
-        // generate token and save
-        var token = new Token({
-          _userId: user._id,
-          token: crypto.randomBytes(16).toString("hex"),
-        });
-        token.save(function (err) {
-          if (err) {
-            return res.status(500).send({ msg: err.message });
-          }
-
-          // Send email (use credintials of SendGrid)
-          var transporter = nodemailer.createTransport({
-            service: "Sendgrid",
-            auth: {
-              user: process.env.SENDGRID_USERNAME,
-              pass: process.env.SENDGRID_PASSWORD,
-            },
-          });
-          var mailOptions = {
-            from: "no-reply@example.com",
-            to: user.email,
-            subject: "Account Verification Link",
-            text:
-              "Hello " +
-              req.body.name +
-              ",\n\n" +
-              "Please verify your account by clicking the link: \nhttp://" +
-              req.headers.host +
-              "/confirmation/" +
-              user.email +
-              "/" +
-              token.token +
-              "\n\nThank You!\n",
-          };
-          transporter.sendMail(mailOptions, function (err) {
-            if (err) {
-              return res.status(500).send({
-                msg: "Technical Issue!, Please click on resend for verify your Email.",
-              });
-            }
-            return res
-              .status(200)
-              .send(
-                "A verification email has been sent to " +
-                  user.email +
-                  ". It will be expire after one day. If you not get verification Email click on resend token."
-              );
-          });
-        });
-      });
-    }
-  });
-};
 
 // Register user
 exports.createUser = catchAsyncErrors(async (req, res, next) => {
@@ -119,12 +41,6 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
       };
     }
 
-    // user = await User.create({
-    //   name,
-    //   email,
-    //   password,
-    //   avatar: userAvatar,
-    // });
     user = new User({
       name,
       email,
@@ -148,13 +64,13 @@ exports.createUser = catchAsyncErrors(async (req, res, next) => {
 
         // Send email 
 
-        const message =
-          `Hello ${req.body.name} \n Please veryfy your account by clicking the link: \n` +
-          `http://localhost:3000/confirmation/${user.email}/${token.token}`;
-
         // const message =
         //   `Hello ${req.body.name} \n Please veryfy your account by clicking the link: \n` +
-        //   `${req.protocol}://${req.get("host")}:3000/verify/${user.email}/${token.token}`;
+        //   `http://localhost:3000/confirmation/${user.email}/${token.token}`;
+
+        const message =
+          `Hello ${req.body.name} \n Please veryfy your account by clicking the link: \n` +
+          `${req.protocol}://${req.get("host")}:3000/verify/${user.email}/${token.token}`;
 
         const mailOptions = {
           email: user.email,
@@ -257,12 +173,12 @@ exports.resendLink = catchAsyncErrors(async (req, res, next) => {
     });
   }
 
-  // const message =
-  //   `Hello ${user.name} \n Please veryfy your account by clicking the link: \n` +
-  //   `${req.protocol}://${req.get("host")}/confirmation/${user.email}/${token.token}`;
   const message =
     `Hello ${user.name} \n Please veryfy your account by clicking the link: \n` +
-    `http://localhost:3000/confirmation/${user.email}/${token.token}`;
+    `${req.protocol}://${req.get("host")}/confirmation/${user.email}/${token.token}`;
+  // const message =
+  //   `Hello ${user.name} \n Please veryfy your account by clicking the link: \n` +
+  //   `http://localhost:3000/confirmation/${user.email}/${token.token}`;
   const mailOptions = {
     email: user.email,
     subject: "Accout Verification Link",
@@ -342,9 +258,9 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     validateBeforeSave: false,
   });
 
-  // const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
+  const resetPasswordUrl = `${req.protocol}://${req.get("host")}/password/reset/${resetToken}`;
    
-  const resetPasswordUrl = `http://localhost:3000/password/reset/${resetToken}`;
+  // const resetPasswordUrl = `http://localhost:3000/password/reset/${resetToken}`;
 
   const message = `Visit the link below to reset your password:- \n\n ${resetPasswordUrl}`;
 
@@ -472,6 +388,8 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
       },
     };
 
+
+
     // newUserData.avatar = {
     //   public_id: myCloud.public_id,
     //   url: myCloud.secure_url,
@@ -483,6 +401,21 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     runValidator: true,
     useFindAndModify: false,
   });
+
+  let products = await Product.find();
+  for(let i = 0;i < products.length ; i++) {
+    let product = products[i];
+    let reviews =product.reviews;
+    for( let i =0;i < reviews.length;i++) {
+
+      if (reviews[i].user.toString() === req.user.id) {
+        reviews[i].avatar = user.avatar.url;
+        reviews[i].name= user.name;
+        break;
+      }
+    }
+    await Product.findByIdAndUpdate(product._id,{reviews})
+  }
 
   res.status(200).json({
     success: true,

@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "./MyOrderDetails.css";
 import Breadcrumbs from "../../more/Breadcrumbs";
 import { useState } from "react";
+import OrderItemCard from "../../more/OrderItemCard";
 
 const MyOrderDetails = ({ match }) => {
   const { order, error, loading } = useSelector(
@@ -120,19 +121,7 @@ const MyOrderDetails = ({ match }) => {
               <div className="orderDetailsCartItemsContainer">
                 {order.orderItems &&
                   order.orderItems.map((item) => (
-                    <div key={item.Offer}>
-                      <img src={item.image} alt="Product" />
-                      <Link to={`/product/${item.Offer}`}>
-                        {item.name}
-                        <div>
-                          {item.size !== null ? `Size: ${item.size}` : ""}
-                        </div>
-                      </Link>{" "}
-                      <span>
-                        {item.quantity} X ${item.price} ={" "}
-                        <b>${item.price * item.quantity}</b>
-                      </span>
-                    </div>
+                    <OrderItemCard item ={item}  key={item.Offer}/>
                   ))}
               </div>
             </div>
