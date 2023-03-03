@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.008c2c78.css",
-    "main.js": "/static/js/main.5aafc7a5.js",
+    "main.css": "/static/css/main.f2814a25.css",
+    "main.js": "/static/js/main.1c0af2bb.js",
     "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
     "static/media/bg2.webp": "/static/media/bg2.2ef5b6017fed0adba55e.webp",
     "static/media/bg1.webp": "/static/media/bg1.f7073642cecc10a59f4b.webp",
@@ -9,12 +9,12 @@
     "static/media/no-product-found.webp": "/static/media/no-product-found.6ab52bd01d67c4f71402.webp",
     "static/media/arsenal-crest-logo.svg": "/static/media/arsenal-crest-logo.fab1ebbc20e487462539c0d1241f185e.svg",
     "index.html": "/index.html",
-    "main.008c2c78.css.map": "/static/css/main.008c2c78.css.map",
-    "main.5aafc7a5.js.map": "/static/js/main.5aafc7a5.js.map",
+    "main.f2814a25.css.map": "/static/css/main.f2814a25.css.map",
+    "main.1c0af2bb.js.map": "/static/js/main.1c0af2bb.js.map",
     "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.008c2c78.css",
-    "static/js/main.5aafc7a5.js"
+    "static/css/main.f2814a25.css",
+    "static/js/main.1c0af2bb.js"
   ]
 }

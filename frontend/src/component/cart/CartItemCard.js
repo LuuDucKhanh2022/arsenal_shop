@@ -4,7 +4,6 @@ import EditIcon from "@material-ui/icons/Edit";
 import "./CartItemCard.css";
 
 const CartItemCard = ({ item, deleteCartItems }) => {
-  console.log(item);
   const [toggle, setToggle] = useState(false);
   return (
     <div className="CartItemCard">
